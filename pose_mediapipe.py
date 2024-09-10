@@ -1,3 +1,33 @@
+#NOSE: 코
+#LEFT_EYE_INNER, LEFT_EYE, LEFT_EYE_OUTER: 왼쪽 눈의 내측, 중심, 외측
+#RIGHT_EYE_INNER, RIGHT_EYE, RIGHT_EYE_OUTER: 오른쪽 눈의 내측, 중심, 외측
+#LEFT_EAR: 왼쪽 귀
+#RIGHT_EAR: 오른쪽 귀
+#MOUTH_LEFT: 입의 왼쪽 끝
+#MOUTH_RIGHT: 입의 오른쪽 끝
+#LEFT_SHOULDER: 왼쪽 어깨
+#RIGHT_SHOULDER: 오른쪽 어깨
+#LEFT_ELBOW: 왼쪽 팔꿈치
+#RIGHT_ELBOW: 오른쪽 팔꿈치
+#LEFT_WRIST: 왼쪽 손목
+#RIGHT_WRIST: 오른쪽 손목
+#LEFT_PINKY: 왼손 새끼손가락
+#RIGHT_PINKY: 오른손 새끼손가락
+#LEFT_INDEX: 왼손 검지손가락
+#RIGHT_INDEX: 오른손 검지손가락
+#LEFT_THUMB: 왼손 엄지손가락
+#RIGHT_THUMB: 오른손 엄지손가락
+#LEFT_HIP: 왼쪽 엉덩이
+#RIGHT_HIP: 오른쪽 엉덩이
+#LEFT_KNEE: 왼쪽 무릎
+#RIGHT_KNEE: 오른쪽 무릎
+#LEFT_ANKLE: 왼쪽 발목
+#RIGHT_ANKLE: 오른쪽 발목
+#LEFT_HEEL: 왼쪽 발뒤꿈치
+#RIGHT_HEEL: 오른쪽 발뒤꿈치
+#LEFT_FOOT_INDEX: 왼쪽 발가락 끝
+#RIGHT_FOOT_INDEX: 오른쪽 발가락 끝
+
 import cv2
 import mediapipe as mp
 
