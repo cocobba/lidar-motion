@@ -1,3 +1,25 @@
+#WRIST: 손목
+#THUMB_CMC: 엄지 기저부(손목과 연결된 관절)
+#THUMB_MCP: 엄지 중간 관절 (MCP)
+#THUMB_IP: 엄지 끝 관절 (IP)
+#THUMB_TIP: 엄지 끝 (팁)
+#INDEX_FINGER_MCP: 검지 손가락 중간 관절 (MCP)
+#INDEX_FINGER_PIP: 검지 손가락 끝에서 두 번째 관절 (PIP)
+#INDEX_FINGER_DIP: 검지 손가락 끝에서 첫 번째 관절 (DIP)
+#INDEX_FINGER_TIP: 검지 손가락 끝 (팁)
+#MIDDLE_FINGER_MCP: 중지 손가락 중간 관절 (MCP)
+#MIDDLE_FINGER_PIP: 중지 손가락 끝에서 두 번째 관절 (PIP)
+#MIDDLE_FINGER_DIP: 중지 손가락 끝에서 첫 번째 관절 (DIP)
+#MIDDLE_FINGER_TIP: 중지 손가락 끝 (팁)
+#RING_FINGER_MCP: 약지 손가락 중간 관절 (MCP)
+#RING_FINGER_PIP: 약지 손가락 끝에서 두 번째 관절 (PIP)
+#RING_FINGER_DIP: 약지 손가락 끝에서 첫 번째 관절 (DIP)
+#RING_FINGER_TIP: 약지 손가락 끝 (팁)
+#PINKY_MCP: 새끼 손가락 중간 관절 (MCP)
+#PINKY_PIP: 새끼 손가락 끝에서 두 번째 관절 (PIP)
+#PINKY_DIP: 새끼 손가락 끝에서 첫 번째 관절 (DIP)
+#PINKY_TIP: 새끼 손가락 끝 (팁)
+
 import cv2
 import mediapipe as mp
 
