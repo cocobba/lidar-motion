@@ -28,21 +28,35 @@ mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 mp_drawing = mp.solutions.drawing_utils
 
-# 웹캠 캡처 시작
+# 웹캡 캡처 시작
 cap = cv2.VideoCapture(0)
+
+# CUDA 사용 여부 확인
+use_cuda = cv2.cuda.getCudaEnabledDeviceCount() > 0
 
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
         break
 
-    # 이미지를 RGB로 변환
-    image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    
+    if use_cuda:
+        # CUDA가 활성화된 경우, GPU에서 이미지 처리를 수행
+        gpu_frame = cv2.cuda_GpuMat()
+        gpu_frame.upload(frame)
+
+        # 이미지를 RGB로 변환 (GPU에서)
+        gpu_image_rgb = cv2.cuda.cvtColor(gpu_frame, cv2.COLOR_BGR2RGB)
+
+        # GPU에서 변환된 이미지를 CPU로 다운로드
+        image = gpu_image_rgb.download()
+    else:
+        # CUDA가 없으면 CPU에서 이미지 처리
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
     # 핸드 추정
     results = hands.process(image)
 
-    # 이미지에 핸드 랜드마크 그리기
+    # 이미지를 다시 BGR로 변환 (이미지를 출력하기 위해)
     image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     finger_count = 0
 
