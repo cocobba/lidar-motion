@@ -27,7 +27,6 @@
 #RIGHT_HEEL: 오른쪽 발뒤꿈치
 #LEFT_FOOT_INDEX: 왼쪽 발가락 끝
 #RIGHT_FOOT_INDEX: 오른쪽 발가락 끝
-
 import cv2
 import mediapipe as mp
 
@@ -39,14 +38,28 @@ mp_drawing = mp.solutions.drawing_utils
 # 웹캠 캡처 시작
 cap = cv2.VideoCapture(0)
 
+# CUDA 사용 가능한지 확인
+use_cuda = cv2.cuda.getCudaEnabledDeviceCount() > 0
+
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
         break
 
-    # 이미지를 RGB로 변환
-    image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    
+    if use_cuda:
+        # CUDA가 활성화된 경우 GPU에서 이미지 처리를 수행
+        gpu_frame = cv2.cuda_GpuMat()
+        gpu_frame.upload(frame)
+        
+        # 이미지를 RGB로 변환 (GPU에서)
+        gpu_image_rgb = cv2.cuda.cvtColor(gpu_frame, cv2.COLOR_BGR2RGB)
+        
+        # GPU에서 CPU로 변환된 이미지를 다운로드
+        image = gpu_image_rgb.download()
+    else:
+        # CUDA가 없으면 CPU에서 처리
+        image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
     # 포즈 추정
     results = pose.process(image)
 
@@ -84,4 +97,3 @@ while cap.isOpened():
 
 cap.release()
 cv2.destroyAllWindows()
-
